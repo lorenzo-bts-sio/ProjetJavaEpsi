@@ -24,6 +24,19 @@ public class Commande
         return somme;  
     }
 
-  
+//  //Soldes
+//  public void reductionObtenue(int reductionValue, int prixredduit)
+//  {
+//       prixreduit = prixHT * reductionValue;
+//      return;
+//  }
+//
+////TVA
+//  public void tvaApliquée(Currency tvaValue, Currency prixttc)
+//  {
+//
+//      prixTTC = prixHT * tvaValue;
+//      return;
+//  }
     
 }

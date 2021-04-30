@@ -17,11 +17,15 @@ public class Pannier
 	}
 
 	
-	public  void ajoutPannier( Produit produit, int quantite)
+	public  void ajoutPannier( Produit produit, int quantiter)
     {
-        this.listeProduits.put(produit, quantite);
+        this.listeProduits.put(produit, quantiter);
         
     }
+	public void  retirerPannier(Produit produit , int quantiter)
+	{
+		
+	}
 	public void etatPannier()
 	{
 		
