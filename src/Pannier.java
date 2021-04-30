@@ -19,8 +19,14 @@ public class Pannier
 	
 	public  void ajoutPannier( Produit produit, int quantiter)
     {
-        this.listeProduits.put(produit, quantiter);
-        
+		if (this.listeProduits.get(produit.getNom())!=null)
+		{
+			int retour =  this.listeProduits.values() + quantiter ;
+			this.listeProduits.replace(produit, retour);
+		}
+		else 
+			this.listeProduits.put(produit, quantiter);
+		
     }
 	public void  retirerPannier(Produit produit , int quantiter)
 	{
