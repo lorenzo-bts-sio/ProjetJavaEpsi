@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Date;
 
 public class Commande 
@@ -6,6 +7,8 @@ public class Commande
 	
  
     private Date date = new Date();
+    private HashMap<Produit, Integer> listeProduits;
+	private Client client;
 
     public Commande( Client client  , Date date  , HashMap listeProduits  )
     {
@@ -16,14 +19,28 @@ public class Commande
 
     }
 
-    public double getSomme(HashMap listeProduits)
+    public double getSomme()
     {
         double somme = 0 ; 
-        for (Produit i : listeProduits.keySet())
-            somme +=  i.prix()  ;  // ajouter la quantiter produit pour le calul
+        for (Map.Entry<Produit, Integer>  i : this.listeProduits.entrySet() )
+        {
+            somme +=  (i.getKey().getPrixHT() * i.getValue() * 1.20)  ;  
+            System.out.println("Votre commande est de " + somme +"€");
+        }
         return somme;  
     }
+    
+    public void validerCommande()
+    {
+    	System.out.println("Commande valider ");
+    	client.setCommande(true);
+    }
 
+    public void commanderecue()
+    {
+    	System.out.println("Heureux que vous avez recue votre commande ");
+    	client.setCommande(false);
+    }
 //  //Soldes
 //  public void reductionObtenue(int reductionValue, int prixredduit)
 //  {

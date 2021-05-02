@@ -6,6 +6,8 @@ public class Client
     private String prenom  = "Inconu" ; 
     private String email = "Inconu" ;
     private Date dateNaissance = null  ; 
+    private boolean commande = false ; 
+    private boolean actif = true ; 
 
     public Client(String nom , String prenom , String email , Date dateNaissance )
     {
@@ -77,5 +79,25 @@ public class Client
     {
        this.email = email ; 
     }
+
+
+	public boolean getCommande() {
+		return commande;
+	}
+
+
+	public void setCommande(boolean commande) {
+		this.commande = commande;
+	}
+
+
+	public boolean getActif() {
+		return actif;
+	}
+
+
+	public void setActif(boolean actif) {
+		this.actif = actif;
+	}
     
 }
