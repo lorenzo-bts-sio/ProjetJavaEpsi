@@ -12,13 +12,14 @@ import main.*;
 public class ClientDAO
 
 {
-	private static Connection connection = (Connection) new dao.Connection().connect();
+	//private static Connection connection = (Connection) new dao.Connection().connect();
+	private static  Connection connect= ConnectionSGBD.connect();
 	public static  ArrayList<Client> CLientAll() throws SQLException
 	{
 		
 		ArrayList<Client> clients = new ArrayList<>();
 		
-		Statement statement = connection.createStatement();
+		Statement statement = connect.createStatement() ; 
 		ResultSet resulat = statement.executeQuery("SELECT * FROM client ; ");
 		while (resulat.next())
 		{

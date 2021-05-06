@@ -1,64 +1,44 @@
-package main;
+package dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 
+public class ConnectionSGBD 
+{
 
-public class ConnectionSGBD {
-
-	private String url = "jdbc:mysql://127.0.0.1:3306/javaProjet"; 
-	private String login = "lorenzo"; 
-	private String password = "lorenzo"; 
-	private Connection connection ; 
+	private static String connectionUrl = "jdbc:mysql://localhost:3306/javaProjet";
+	private static String dbUser = "lorenzo";
+	private static String dbPwd = "lorenzo";
+	private static Connection connectionSGBD = null;
 	
-	
-	public ConnectionSGBD() 
+
+	public static Connection connect()
 	{
-		
-		this.url = url ; 
-		this.login = login ; 
-		this.password  = password ; 
-		this.connection = connection ; 
-			
-	}
-	
-	public ArrayList<Client> connect() 
-	{
-		try
+		if (connectionSGBD == null) 
 		{
-			Connection connection= DriverManager.getConnection(this.url, this.login, this.password);
-		//	Statement requete = connection.createStatement();
-		//	return this.connection ;
-			ArrayList<Client> produit = new ArrayList<>();
-			
-			Statement statement = connection.createStatement();
-			ResultSet resulat = statement.executeQuery("SELECT * FROM client ; ");
-			while (resulat.next())
+			try
 			{
-				int id = resulat.getInt("id");
-				String nom = resulat.getString("nom");
-				String prenom = resulat.getString("prenom");
-				String email = resulat.getString("email");
-				String date = resulat.getString("dateNaissance");
-				boolean actif = resulat.getBoolean("actif");
-				produit.add(new Client(id ,nom, prenom, email, null));
-				//System.out.println(id  +nom +prenom);
+				connectionSGBD  = DriverManager.getConnection(connectionUrl, dbUser, dbPwd);
 				
 			}
-			return produit ; 
+			catch(SQLException e )
+			{
+				System.out.println("Impossible de ce connecter a la base de données ");
+				 
+			}
 		}
-		catch(SQLException e )
-		{
-			System.out.println("Impossible de ce connecter a la base de données ");
-			return null ; 
-		}
+		return connectionSGBD ;
+			
 	}
-	
-	
-	
+
+}
+
+
+
+
+
+
 
 }

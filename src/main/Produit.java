@@ -12,17 +12,19 @@ public class Produit
         private String reference;
         private String libelle;
         private double prixHT;
-        private String tauxVente;
+        private int stock ; 
+       
 
 //CONSTRUCTEUR
-        public Produit(int idProduitValue, String nomValue, String referenceValue, String libelleValue, double prixHTValue, String tauxVenteValue)
+        public Produit(int idProduitValue, String nomValue, String referenceValue, String libelleValue, double prixHTValue, int stock)
             {
                 this.idProduit = idProduitValue;
                 this.nom = nomValue;
                 this.reference = referenceValue;
                 this.libelle = libelleValue;
                 this.prixHT = prixHTValue;
-                this.tauxVente = tauxVenteValue;
+                this.stock = stock ;
+                
             }
 
 
@@ -74,13 +76,5 @@ public class Produit
             {
                 this.prixHT = prixHT;
             }
-        public String getTauxVente()
-            {
-                return tauxVente;
-            }
-
-        public void setTauxVente(String tauxVente)
-            {
-                this.tauxVente = tauxVente;
-            }
+       
     }
